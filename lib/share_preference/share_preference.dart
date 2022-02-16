@@ -12,3 +12,8 @@ Future<bool> login({required String key, required bool isLogin})async{
   SharedPreferences preferences = await SharedPreferences.getInstance();
   return preferences.setBool(key, isLogin);
 }
+
+Future<String> getData({required String key})async{
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  return preferences.getString(key) ?? '';
+}
