@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:share_preference01/screen/register.dart';
 
-class UpdateScreen extends StatefulWidget {
-  const UpdateScreen({Key? key}) : super(key: key);
+import 'register.dart';
+
+class UpdatePage extends StatefulWidget {
+  const UpdatePage({Key? key}) : super(key: key);
 
   @override
-  _UpdateScreenState createState() => _UpdateScreenState();
+  _UpdatePageState createState() => _UpdatePageState();
 }
 
-class _UpdateScreenState extends State<UpdateScreen> {
+class _UpdatePageState extends State<UpdatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Update Screen'),
+        title: Text('Update Biography'),
       ),
-      body: RegisterScreen(),
+      body: RegisterPage(),
     );
   }
 }

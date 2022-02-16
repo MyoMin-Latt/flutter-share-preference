@@ -1,59 +1,54 @@
 import 'package:flutter/material.dart';
-import 'package:share_preference01/screen/register.dart';
 import 'package:share_preference01/screen/update.dart';
 import 'package:share_preference01/share_preference/share_preference.dart';
 
-class BiographyScreen extends StatefulWidget {
-  const BiographyScreen({Key? key}) : super(key: key);
+class BiographyPage extends StatefulWidget {
+  const BiographyPage({Key? key}) : super(key: key);
 
   @override
-  _BiographyScreenState createState() => _BiographyScreenState();
+  _BiographyPageState createState() => _BiographyPageState();
 }
 
-class _BiographyScreenState extends State<BiographyScreen> {
+class _BiographyPageState extends State<BiographyPage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text('Name'),
-        getSPDtata(getData(key: 'name')),
-        Divider(),
-        Text('Email'),
-        getSPDtata(getData(key: 'email')),
-        Divider(),
-        Text('Address'),
-        getSPDtata(getData(key: 'address')),
-        Divider(),
-        ElevatedButton.icon(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return UpdateScreen();
-                },
-              ));
-            },
-            icon: Icon(Icons.edit_outlined),
-            label: Text('Edit')),
-        ElevatedButton.icon(
-            onPressed: () {
+    return Column(children: [
+      Text('Name'),
+      getSharePreData(getData(key: 'name')),
+      Divider(),
+      Text('Email'),
+      getSharePreData(getData(key: 'email')),
+      Divider(),
+      Text('Address'),
+      getSharePreData(getData(key: 'phone')),
+      Divider(),
+      ElevatedButton.icon(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return UpdatePage();
+            }));
+          },
+          icon: Icon(Icons.edit),
+          label: Text('Edit')),
+      ElevatedButton.icon(
+          onPressed: () {
+            setState(() {
               logout(context);
-            },
-            icon: Icon(Icons.logout),
-            label: Text('LogOut'))
-      ],
-    );
+            });
+          },
+          icon: Icon(Icons.logout),
+          label: Text('Logout')),
+    ]);
   }
 
-  Widget getSPDtata(Future<String> data) {
+  Widget getSharePreData(Future<String> Data) {
     return FutureBuilder<String>(
-        future: data,
+        future: Data,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Text(snapshot.data!);
           } else if (snapshot.hasError) {
-            return Center(
-              child: Text('Future Snapshot has error'),
-            );
+            return Center(child: Text('Error'));
           } else {
             return Center(
               child: CircularProgressIndicator(),

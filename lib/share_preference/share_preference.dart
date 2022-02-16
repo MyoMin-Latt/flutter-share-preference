@@ -7,14 +7,14 @@ Future<bool> isLogin() async {
   return preferences.getBool('login') ?? false;
 }
 
-Future saveData({required String key, required String value}) async {
+void saveData({required String key, required String value}) async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  return preferences.setString(key, value);
+  preferences.setString(key, value);
 }
 
-Future<bool> login({required String key, required bool isLogin}) async {
+Future<bool> login({required String key, required bool value}) async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  return preferences.setBool(key, isLogin);
+  return preferences.setBool(key, value);
 }
 
 Future<String> getData({required String key}) async {
@@ -25,12 +25,12 @@ Future<String> getData({required String key}) async {
 void logout(context) {
   saveData(key: 'name', value: '');
   saveData(key: 'email', value: '');
-  saveData(key: 'address', value: '');
-  login(key: 'login', isLogin: false);
-  refresh(context);
+  saveData(key: 'phone', value: '');
+  login(key: 'login', value: false);
+  refreshData(context);
 }
 
-void refresh(context) {
+refreshData(context) {
   Navigator.pop(context);
   Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()));
 }

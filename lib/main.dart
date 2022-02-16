@@ -6,26 +6,21 @@
 // @14.6 Login App (Shared-preference) [Part 3]
 // @14.6 Login App (SharedPreference)[Part 4]
 
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'screen/home.dart';
 
 void main() {
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
-  const MyApp({ Key? key }) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: HomePage(),
     );
   }
 }
-
